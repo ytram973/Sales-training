@@ -1,0 +1,66 @@
+@startuml diagrammeDeClasse
+
+class User {
+  - id : int
+  - login : String
+  - password : String
+}
+
+class Client {
+  - id : int
+  - nom : String
+  - prenom : String
+  - adresse : String
+  - email : String
+  - telephone : String
+}
+
+class Commande {
+  - id : int
+  - dateCommande : Date
+}
+
+class LigneCommande {
+  - id : int
+  - quantite : int
+  - prixUnitaire : double
+}
+
+class Formation {
+  - id : int
+  - name : String
+  - description : String
+  - dureeJours : int
+  - mode : Mode
+  - price : double
+}
+
+class Categorie {
+  - id : int
+  - name : String
+}
+
+enum Mode {
+  PRESENTIEL
+  DISTANCIEL
+}
+
+class Panier {
+  // non persistant
+}
+
+' ==========================
+'      RELATIONS
+' ==========================
+
+User "1" --> "0..*" Commande
+Client "1" --> "0..*" Commande
+
+Commande "1" --> "1..*" LigneCommande
+Formation "1" --> "0..*" LigneCommande
+
+Categorie "1" --> "0..*" Formation
+
+Panier "1" --> "0..*" LigneCommande
+
+@enduml

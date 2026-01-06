@@ -1,0 +1,14 @@
+@startuml Afficher_Formations
+actor Utilisateur
+
+boundary Main
+control FormationDaoImpl
+database MariaDB
+
+Utilisateur -> Main: choisir "Afficher toutes les formations"
+Main -> FormationDaoImpl: findAll()
+FormationDaoImpl -> MariaDB: SELECT * FROM formation
+MariaDB --> FormationDaoImpl: lignes de résultats
+FormationDaoImpl --> Main: List<Formation>
+Main --> Utilisateur: afficher la liste des formations
+@enduml

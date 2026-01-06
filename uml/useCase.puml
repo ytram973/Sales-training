@@ -1,0 +1,22 @@
+@startuml useCase
+
+left to right direction
+
+actor "Visiteur" as V
+
+rectangle "Système de gestion des formations" {
+
+    usecase "Consulter les formations" as UC1
+    usecase "Filtrer par catégorie" as UC2
+    usecase "Filtrer par mode\n(présentiel/distanciel)" as UC3
+    usecase "Rechercher par mot-clé\n(nom / description)" as UC4
+}
+
+V --> UC1
+V --> UC2
+V --> UC3
+V --> UC4
+
+
+
+@enduml
